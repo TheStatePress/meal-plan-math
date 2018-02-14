@@ -5,9 +5,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    numBreakfasts: 3,
-    numLunches: 3,
-    numDinners: 3,
+    numBreakfasts: 2,
+    numLunches: 2,
+    numDinners: 2,
     breakfastPrice: 7,
     lunchPrice: 8,
     dinnerPrice: 9,
