@@ -1,10 +1,10 @@
 import {
-  Bar,
+  HorizontalBar,
   mixins
 } from 'vue-chartjs';
 
 export default {
-  extends: Bar,
+  extends: HorizontalBar,
   mixins: [mixins.reactiveProp],
   props: [],
   mounted() {
