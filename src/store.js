@@ -8,7 +8,6 @@ export default new Vuex.Store({
     numBreakfasts: 3,
     numLunches: 3,
     numDinners: 3,
-    mealPlanPrice: 1234,
     breakfastPrice: 7,
     lunchPrice: 8,
     dinnerPrice: 9,
@@ -23,9 +22,6 @@ export default new Vuex.Store({
     },
     setNumDinners: (state, payload) => {
       state.numDinners = payload;
-    },
-    setMealPlanPrice: (state, price) => {
-      state.mealPlanPrice = price;
     }
   },
   actions: {
@@ -43,19 +39,20 @@ export default new Vuex.Store({
       commit
     }, payload) => {
       commit("setNumDinners", payload);
-    },
-    setMealPlanPrice: ({
-      commit
-    }, price) => {
-      commit("setMealPlanPrice", price);
     }
   },
   getters: {
     cashCost: state => {
       return state.numWeeksInSemester * ((state.numBreakfasts * state.breakfastPrice) + (state.numLunches * state.lunchPrice) + (state.numDinners * state.dinnerPrice));
     },
-    mealPlanPrice: state => {
-      return state.mealPlanPrice;
+    numBreakfasts: state => {
+      return state.numBreakfasts;
+    },
+    numLunches: state => {
+      return state.numLunches;
+    },
+    numDinners: state => {
+      return state.numDinners;
     }
   }
 });
