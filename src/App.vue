@@ -62,13 +62,50 @@ export default {
       return this.$store.getters.numDinners;
     },
     getChartData() {
+      let data = [
+        {
+          label: "Unlimited",
+          value: 2210
+        },
+        {
+          label: "Sparky's Favorite",
+          value: 1932.5
+        },
+        {
+          label: "Maroon",
+          value: 1587.5
+        },
+        {
+          label: "Gold",
+          value: 1177.5
+        },
+        {
+          label: "Cash",
+          value: this.cashCost
+        }
+      ];
+
+      data.sort((a, b) => {
+        if (a.value == b.value) {
+          return 0;
+        }
+
+        if (a.value > b.value) {
+          return -1;
+        }
+
+        return 1;
+      });
+
       return {
-        labels: ["Unlimited", "Sparky's Favorite", "Maroon", "Gold", "Cash"],
+        labels: data.map(item => item.label),
         datasets: [
           {
             label: "Semester Costs",
-            backgroundColor: "#8c383e",
-            data: [2210, 1932.5, 1587.5, 1177.5, this.cashCost]
+            backgroundColor: data.map(
+              item => (item.label == "Cash" ? "#FFD700" : "#8c383e")
+            ),
+            data: data.map(item => item.value)
           }
         ]
       };
@@ -101,7 +138,7 @@ export default {
 }
 
 .input-group {
-  padding: 20px 10px;
+  padding: 20px 0px;
 }
 
 .meal-input {
