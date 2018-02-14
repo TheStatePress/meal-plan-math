@@ -6,13 +6,13 @@
         <div class="row">
           <div class="input-group">
             <label for="breakfasts" class="col">Breakfasts: {{numBreakfasts}}</label>
-            <input v-on:change="breakfastsChange" class="col" type="range" min="0" max="7" value="2" name="breakfasts" id="numBreakfasts">
+            <input v-on:change="breakfastsChange" class="col" type="range" min="0" max="6" value="2" name="breakfasts" id="numBreakfasts">
           </div> 
         </div>
         <div class="row">
           <div class="input-group">
             <label for="lunches" class="col">Lunches: {{numLunches}}</label>
-            <input class="col" v-on:change="lunchesChange" type="range" min="0" max="7" value="2" name="lunches" id="numLunches">
+            <input class="col" v-on:change="lunchesChange" type="range" min="0" max="8" value="2" name="lunches" id="numLunches">
           </div>
         </div>
         <div class="row">
