@@ -2,7 +2,7 @@
 module.exports = {
     configureWebpack: {
         output: {
-            publicPath: '/dist/'
+            publicPath: '/meal-plan-math/dist/'
         },
     }
 }
