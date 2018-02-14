@@ -8,9 +8,9 @@ export default new Vuex.Store({
     numBreakfasts: 2,
     numLunches: 2,
     numDinners: 2,
-    breakfastPrice: 7,
-    lunchPrice: 8,
-    dinnerPrice: 9,
+    breakfastPrice: 6.95,
+    lunchPrice: 8.95,
+    dinnerPrice: 9.95,
     numWeeksInSemester: 15
   },
   mutations: {

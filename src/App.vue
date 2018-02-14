@@ -74,28 +74,28 @@ export default {
       let data = [
         {
           label: "Unlimited",
-          value: 2210,
+          value: 2360,
           tooManyMeals: () => {
             return false;
           }
         },
         {
           label: "Sparky's Favorite",
-          value: 1932.5,
+          value: 2075,
           tooManyMeals: () => {
             return this.mealsPerWeek > 14;
           }
         },
         {
           label: "Maroon",
-          value: 1587.5,
+          value: 1710,
           tooManyMeals: () => {
             return this.mealsPerSemester > 180;
           }
         },
         {
           label: "Gold",
-          value: 1177.5,
+          value: 1260,
           tooManyMeals: () => {
             return this.mealsPerWeek > 8;
           }
