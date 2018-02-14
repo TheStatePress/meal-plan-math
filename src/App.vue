@@ -22,7 +22,7 @@
           </div>
         </div>   
         <div class="row">
-          <p>Change the number of each type of meal you eat per week. The cash value will be graphed on the right in <span class="gold">gold.</span> If you have selected more meals than are in a meal plan, it will be displayed in <span class="gray">gray.</span> All other meal plans will be displayed in <span class="maroon">maroon.</span></p>
+          <p>Change the number of each type of meal you eat per week. The cash value will be graphed on the right in <span class="gold">gold.</span> If you have selected more meals than are in a meal plan, it will be displayed in <span class="gray">gray.</span> All other meal plans will be displayed in <span class="maroon">maroon.</span> Meal plan prices are calculated by subtracting M&amp;G dollars from total price (M&amp;G is 1:1 with cash).</p>
         </div> 
       </div>
 
@@ -74,28 +74,28 @@ export default {
       let data = [
         {
           label: "Unlimited",
-          value: 2210,
+          value: 2360,
           tooManyMeals: () => {
             return false;
           }
         },
         {
           label: "Sparky's Favorite",
-          value: 1932.5,
+          value: 2075,
           tooManyMeals: () => {
             return this.mealsPerWeek > 14;
           }
         },
         {
           label: "Maroon",
-          value: 1587.5,
+          value: 1710,
           tooManyMeals: () => {
             return this.mealsPerSemester > 180;
           }
         },
         {
           label: "Gold",
-          value: 1177.5,
+          value: 1260,
           tooManyMeals: () => {
             return this.mealsPerWeek > 8;
           }
