@@ -53,6 +53,12 @@ export default new Vuex.Store({
     },
     numDinners: state => {
       return state.numDinners;
+    },
+    mealsPerWeek: state => {
+      return state.numBreakfasts + state.numLunches + state.numDinners;
+    },
+    mealsPerSemester: state => {
+      return state.numWeeksInSemester * (state.numBreakfasts + state.numLunches + state.numDinners);
     }
   }
 });

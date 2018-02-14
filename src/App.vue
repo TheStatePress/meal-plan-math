@@ -6,21 +6,24 @@
         <div class="row">
           <div class="input-group">
             <label for="breakfasts" class="col">Breakfasts: {{numBreakfasts}}</label>
-            <input v-on:change="breakfastsChange" class="col" type="range" min="0" max="7" value="3" name="breakfasts" id="numBreakfasts">
+            <input v-on:change="breakfastsChange" class="col" type="range" min="0" max="7" value="2" name="breakfasts" id="numBreakfasts">
           </div> 
         </div>
         <div class="row">
           <div class="input-group">
             <label for="lunches" class="col">Lunches: {{numLunches}}</label>
-            <input class="col" v-on:change="lunchesChange" type="range" min="0" max="7" value="3" name="lunches" id="numLunches">
+            <input class="col" v-on:change="lunchesChange" type="range" min="0" max="7" value="2" name="lunches" id="numLunches">
           </div>
         </div>
         <div class="row">
           <div class="input-group">
             <label for="dinners" class="col">Dinners: {{numDinners}}</label>
-            <input v-on:change="dinnersChange" class="col" type="range" min="0" max="7" value="3" name="dinners" id="numDinners">
+            <input v-on:change="dinnersChange" class="col" type="range" min="0" max="7" value="2" name="dinners" id="numDinners">
           </div>
-        </div>    
+        </div>   
+        <div class="row">
+          <p>Change the number of each type of meal you eat per week. The cash value will be graphed on the right in <span class="gold">gold.</span> If you have selected more meals than are in a meal plan, it will be displayed in <span class="gray">gray.</span> All other meal plans will be displayed in <span class="maroon">maroon.</span></p>
+        </div> 
       </div>
 
       <div id="results" class="col-sm-8">
@@ -61,23 +64,41 @@ export default {
     numDinners() {
       return this.$store.getters.numDinners;
     },
+    mealsPerWeek() {
+      return this.$store.getters.mealsPerWeek;
+    },
+    mealsPerSemester() {
+      return this.$store.getters.mealsPerSemester;
+    },
     getChartData() {
       let data = [
         {
           label: "Unlimited",
-          value: 2210
+          value: 2210,
+          tooManyMeals: () => {
+            return false;
+          }
         },
         {
           label: "Sparky's Favorite",
-          value: 1932.5
+          value: 1932.5,
+          tooManyMeals: () => {
+            return this.mealsPerWeek > 14;
+          }
         },
         {
           label: "Maroon",
-          value: 1587.5
+          value: 1587.5,
+          tooManyMeals: () => {
+            return this.mealsPerSemester > 180;
+          }
         },
         {
           label: "Gold",
-          value: 1177.5
+          value: 1177.5,
+          tooManyMeals: () => {
+            return this.mealsPerWeek > 8;
+          }
         },
         {
           label: "Cash",
@@ -103,7 +124,10 @@ export default {
           {
             label: "Semester Costs",
             backgroundColor: data.map(
-              item => (item.label == "Cash" ? "#FFD700" : "#8c383e")
+              item =>
+                item.label == "Cash"
+                  ? "#FED106"
+                  : item.tooManyMeals() ? "#D3D3D3" : "#8D383F"
             ),
             data: data.map(item => item.value)
           }
@@ -141,7 +165,16 @@ export default {
   padding: 20px 0px;
 }
 
-.meal-input {
-  margin-top: 100px;
+.gold {
+  background: #fed106;
+}
+
+.gray {
+  background: #d3d3d3;
+}
+
+.maroon {
+  background: #8d383f;
+  color: white;
 }
 </style>
